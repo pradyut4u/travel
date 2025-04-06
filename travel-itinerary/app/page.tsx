@@ -12,7 +12,7 @@ export default function Home() {
             <span>Pune Explorer</span>
           </Link>
           <nav className="flex items-center gap-4">
-            <Link href="/about" className="text-sm font-medium hover:underline underline-offset-4">
+            <Link href="/About" className="text-sm font-medium hover:underline underline-offset-4">
               About
             </Link>
             <Link href="/contact" className="text-sm font-medium hover:underline underline-offset-4">
@@ -51,7 +51,7 @@ export default function Home() {
               <div className="flex items-center justify-center">
                 <div className="relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-lg overflow-hidden">
                   <img
-                    src="/placeholder.svg?height=500&width=800&text=Pune%20and%20Surroundings"
+                    src="/ttb.png?height=500&width=800&text=Pune%20and%20Surroundings"
                     alt="Map of Pune and surrounding attractions"
                     className="object-cover w-full h-full"
                   />
@@ -66,33 +66,38 @@ export default function Home() {
               <div className="space-y-2">
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Explore By Category</h2>
                 <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Discover the best attractions, treks, and beaches around Pune
+                  Discover the best attractions, treks, and beaches around India.
                 </p>
               </div>
             </div>
             <div className="grid gap-6 mt-8 md:grid-cols-4 md:gap-8">
-              {[
-                { name: "City Attractions", image: "city" },
-                { name: "Nearby Treks", image: "treks" },
-                { name: "Konkan Beaches", image: "beaches" },
-                { name: "Historical Forts", image: "forts" },
-              ].map((category) => (
-                <Link href="/planner" key={category.name}>
-                  <div className="relative overflow-hidden rounded-lg group h-60">
-                    <img
-                      src={`/placeholder.svg?height=300&width=400&text=${category.image}`}
-                      alt={category.name}
-                      className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 flex items-end bg-gradient-to-t from-black/60 to-transparent">
-                      <div className="p-4">
-                        <h3 className="text-xl font-bold text-white">{category.name}</h3>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
+  {[
+    { name: "City Attractions", image: "/city.jpg" },
+    { name: "Nearby Treks", image: "/mntn.webp" },
+    { name: "Beaches", image: "/beach.jpg" },
+    { name: "Historical Forts", image: "/fort.jpg" },
+  ].map((category) => (
+    <a href="/planner" key={category.name} className="group relative h-60 rounded-lg overflow-hidden shadow-lg transition-transform duration-300 transform hover:scale-105">
+      {/* Image */}
+      <img
+        src={category.image}
+        alt={category.name}
+        className="w-full h-full object-cover"
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-all duration-300" />
+
+      {/* Text */}
+      <div className="absolute bottom-0 w-full p-4">
+        <h3 className="text-xl font-bold text-white transition-opacity duration-300 group-hover:opacity-100 opacity-80">
+          {category.name}
+        </h3>
+      </div>
+    </a>
+  ))}
+</div>
+
           </div>
         </section>
         <section className="py-12 bg-gray-50 md:py-16 lg:py-20">
